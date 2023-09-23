@@ -1,13 +1,15 @@
 import { Outlet } from "react-router-dom"
+import Footer from "../Footer/Footer"
+import Header from "../Header/Header"
 
 const Root = () => {
     return (
         <>
-            this is the root file
-            <div className='min-h-screen'>
+            <Header />
+            <div className='min-h-[50vh]'>
                 <Outlet />
             </div>
-            footer 
+            <Footer />
         </>
     )
 }
