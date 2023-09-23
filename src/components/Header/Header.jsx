@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom"
 const Header = () => {
 
     const links = <>
-        <li><NavLink to={'/home'}>Home</NavLink></li>
+        <li><NavLink to={'/'}>Home</NavLink></li>
         <li><NavLink to={'/statistics'}>Statistics</NavLink></li>
         <li><NavLink to={'/appliedJobs'}>Applied Jobs</NavLink></li>
         <li><NavLink to={'/blog'}>Blog</NavLink></li>
@@ -28,7 +28,7 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Star Applying</a>
+                <a className="btn bg-purple-400 text-white">Star Applying</a>
             </div>
         </div>
     )

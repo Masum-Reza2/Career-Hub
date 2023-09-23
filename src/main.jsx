@@ -12,7 +12,7 @@ import ErrorElement from './components/ErrorElement/ErrorElement';
 import Statistics from './components/Statistics/Statistics';
 import AppliedJobs from './components/AppliedJobs/AppliedJobs';
 import Blog from './components/Blog/Blog';
-import Home from './components/Home/Home';
+import Home from './components/Home/Home'
 
 const router = createBrowserRouter([
   {
@@ -20,7 +20,7 @@ const router = createBrowserRouter([
     element: <Root />,
     errorElement: <ErrorElement />,
     children: [
-      { path: '/home', element: <Home /> },
+      { path: '/', element: <Home /> },
       { path: '/statistics', element: <Statistics /> },
       { path: '/appliedJobs', element: <AppliedJobs /> },
       { path: '/blog', element: <Blog /> },
