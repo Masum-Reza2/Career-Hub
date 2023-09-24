@@ -13,7 +13,7 @@ const Card = ({ job }) => {
                 <p><span className="underline">Location</span> : {location}</p>
                 <p className="font-semibold"><span className="underline">Salary</span> : {salary}</p>
             </div>
-            <Link to={``}>
+            <Link to={`/appliedJobs/${id}`}>
                 <button className="btn bg-purple-400">Details</button>
             </Link>
         </div>
