@@ -1,8 +1,13 @@
-import { useLoaderData, useParams } from "react-router-dom"
+import { useLoaderData, useNavigate, useParams } from "react-router-dom"
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { saveJobApplicatin } from "../Utility/LocalStorage";
 
 const JobDetails = () => {
     const jobs = useLoaderData();
     const { id } = useParams();
+    const navigate = useNavigate();
 
     const requireData = jobs.find(job => job.id === parseFloat(id))
     // this is not the best practice, for a piece of data we should not load the entire data, just load a single piece of data.
@@ -10,8 +15,34 @@ const JobDetails = () => {
     let { company_name, contact_information, educational_requirements, experiences, job_description, job_responsibility, job_title, job_type, location, logo, remote_or_onsite, salary } = requireData
     let { address, email, phone } = contact_information
 
+    const ApplyJobToast = () => {
+        toast.success('Successfully Applied', {
+            position: "top-right",
+            autoClose: 2500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+        })
+        saveJobApplicatin(parseFloat(id))
+    }
+
     return (
         <div>
+            <ToastContainer
+                position="top-right"
+                autoClose={2500}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+            />
             <div className="w-[90%] mx-auto">
                 <h1 className="font-semibold text-xl text-center underline">Job Details of : {job_title}</h1>
 
@@ -47,12 +78,14 @@ const JobDetails = () => {
                             <p className="font-semibold">Address : <span className="text-gray-500">{address}/Month</span></p>
                         </div>
                         <div className="text-center py-5">
-                            <button className="btn bg-purple-400 text-white hover:text-black">Apply Now</button>
+                            <button onClick={ApplyJobToast} className="btn bg-purple-400 text-white hover:text-black">Apply Now</button>
                         </div>
                     </div>
                 </div>
 
-
+                <div className="text-center pb-5">
+                    <button onClick={() => navigate(-1)} className="btn">Go Back</button>
+                </div>
 
             </div>
 

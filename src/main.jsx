@@ -22,9 +22,13 @@ const router = createBrowserRouter([
     errorElement: <ErrorElement />,
     children: [
       { path: '/', element: <Home /> },
-      { path: '/job/:id', loader: () => fetch('../public/jobs.json') , element: <JobDetails /> },
+      { path: '/job/:id', loader: () => fetch('../public/jobs.json'), element: <JobDetails /> },
       { path: '/statistics', element: <Statistics /> },
-      { path: '/appliedJobs', element: <AppliedJobs /> },
+      {
+        path: '/appliedJobs',
+        loader: () => fetch('jobs.json'), //this is not the best practice. Do not load all data for 1 data
+        element: <AppliedJobs />
+      },
       { path: '/blog', element: <Blog /> },
     ]
   },
