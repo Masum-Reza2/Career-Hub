@@ -29,17 +29,14 @@ const AppliedJobs = () => {
   const handleDisplayJob = data => {
     if (data === 'all') {
       setDisplayJob(appliedJobs)
-      console.log(displayJob)
     }
     else if (data === 'remote') {
       let remoteJobs = appliedJobs.filter(job => job.remote_or_onsite === 'Remote')
       setDisplayJob(remoteJobs)
-      console.log(remoteJobs)
     }
     else if (data === 'onsite') {
       let onsiteJobs = appliedJobs.filter(job => job.remote_or_onsite === 'Onsite')
-      setAppliedJobs(onsiteJobs)
-      console.log(onsiteJobs)
+      setDisplayJob(onsiteJobs)
     }
   }
 
@@ -58,7 +55,7 @@ const AppliedJobs = () => {
         </details>
       </div>
 
-      <div className="w-[80%] mx-auto grid gap-5 grid-cols-1">
+      <div className="w-[80%] mx-auto grid gap-5 grid-cols-1 py-5">
         {
           displayJob.map(job => <Card key={job.id} job={job} />)
         }
